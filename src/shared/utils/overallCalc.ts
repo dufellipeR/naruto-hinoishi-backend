@@ -29,7 +29,7 @@ export default function overallCalc({
     endurance +
     willpower;
 
-  const overall = total / 8;
+  const overall = Math.round(total / 8);
 
   return overall;
 }
