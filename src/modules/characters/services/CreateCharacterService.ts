@@ -3,6 +3,7 @@ import { injectable, inject } from 'tsyringe';
 // import AppError from '@shared/errors/AppError';
 
 import overallCalc from '@shared/utils/overallCalc';
+import AppError from '@shared/errors/AppError';
 import Character from '../infra/typeorm/entities/Characters';
 import ICharactersRepository from '../repositories/ICharactersRepository';
 
@@ -52,6 +53,12 @@ class CreateCharacterService {
       endurance,
       willpower,
     });
+
+    if (overall > 100) {
+      throw new AppError(
+        'Your character should not have more than 100 as overall',
+      );
+    }
 
     const character = await this.charactersRepository.create({
       thumbnail,
