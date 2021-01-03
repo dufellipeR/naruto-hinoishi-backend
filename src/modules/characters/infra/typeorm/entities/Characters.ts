@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Stat from './Skill';
+import Stat from './Stat';
 
 @Entity('characters')
 class Character {
