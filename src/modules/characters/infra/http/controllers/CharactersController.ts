@@ -1,4 +1,6 @@
 import CreateCharacterService from '@modules/characters/services/CreateCharacterService';
+import ListCharactersService from '@modules/characters/services/ListCharactersService';
+import ShowCharacterService from '@modules/characters/services/ShowCharacterService';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -35,6 +37,24 @@ export default class CharactersController {
       endurance,
       willpower,
     });
+
+    return res.json(character);
+  }
+
+  public async index(req: Request, res: Response): Promise<Response> {
+    const listCharacters = container.resolve(ListCharactersService);
+
+    const characters = await listCharacters.execute();
+
+    return res.json(characters);
+  }
+
+  public async show(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    const showCharacter = container.resolve(ShowCharacterService);
+
+    const character = await showCharacter.execute(id);
 
     return res.json(character);
   }
