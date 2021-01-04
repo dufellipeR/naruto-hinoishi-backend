@@ -28,6 +28,16 @@ charactersRouter.post(
   }),
   charactersController.create,
 );
-// appointmentsRouter.get('/me', charactersController.index);
+charactersRouter.get('/all', charactersController.index);
+
+charactersRouter.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().required(),
+    },
+  }),
+  charactersController.show,
+);
 
 export default charactersRouter;
