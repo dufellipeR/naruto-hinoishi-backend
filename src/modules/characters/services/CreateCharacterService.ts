@@ -54,12 +54,6 @@ class CreateCharacterService {
       willpower,
     });
 
-    if (overall > 100) {
-      throw new AppError(
-        'Your character should not have more than 100 as overall',
-      );
-    }
-
     const character = await this.charactersRepository.create({
       thumbnail,
       type,
