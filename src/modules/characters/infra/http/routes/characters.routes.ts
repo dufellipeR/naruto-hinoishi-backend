@@ -40,4 +40,26 @@ charactersRouter.get(
   charactersController.show,
 );
 
+charactersRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.BODY]: {
+      thumbnail: Joi.string().required(),
+      type: Joi.string().required(),
+      name: Joi.string().required(),
+      desc: Joi.string().required(),
+      stat_id: Joi.string().required(),
+      power: Joi.number().required(),
+      intelligence: Joi.number().required(),
+      speed: Joi.number().required(),
+      taijutsu: Joi.number().required(),
+      ninjutsu: Joi.number().required(),
+      genjutsu: Joi.number().required(),
+      endurance: Joi.number().required(),
+      willpower: Joi.number().required(),
+    },
+  }),
+  charactersController.update,
+);
+
 export default charactersRouter;
