@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for CreateCharacterService.ts</title>
+    <title>Code coverage report for UpdateCharacterService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> CreateCharacterService.ts</h1>
+        <h1><a href="index.html">All files</a> UpdateCharacterService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>67/67</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>77/77</span>
+                <span class='fraction'>67/67</span>
             </div>
         
             
@@ -124,27 +124,7 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -219,34 +199,22 @@ import overallCalc from '@shared/utils/overallCalc';
 import AppError from '@shared/errors/AppError';
 import Character from '../infra/typeorm/entities/Characters';
 import ICharactersRepository from '../repositories/ICharactersRepository';
-&nbsp;
-interface IRequestDTO {
-  thumbnail: string;
-  type: string;
-  name: string;
-  desc: string;
-  power: number;
-  intelligence: number;
-  speed: number;
-  taijutsu: number;
-  ninjutsu: number;
-  genjutsu: number;
-  endurance: number;
-  willpower: number;
-}
+import IUpdateCharacterDTO from '../dtos/IUpdateCharacterDTO';
 &nbsp;
 @injectable()
-class CreateCharacterService {
+class UpdateCharacterService {
   constructor(
     @inject('CharactersRepository')
     private charactersRepository: ICharactersRepository,
   ) {}
 &nbsp;
   public async execute({
+    id,
     thumbnail,
     type,
     name,
     desc,
+    stat_id,
     power,
     intelligence,
     speed,
@@ -255,7 +223,7 @@ class CreateCharacterService {
     genjutsu,
     endurance,
     willpower,
-  }: IRequestDTO): Promise&lt;Character&gt; {
+  }: Omit&lt;IUpdateCharacterDTO, 'overall'&gt;): Promise&lt;Character | undefined&gt; {
     const overall = overallCalc({
       power,
       intelligence,
@@ -267,11 +235,13 @@ class CreateCharacterService {
       willpower,
     });
 &nbsp;
-    const character = await this.charactersRepository.create({
+    const character = await this.charactersRepository.update({
+      id,
       thumbnail,
       type,
       name,
       desc,
+      stat_id,
       power,
       intelligence,
       speed,
@@ -287,7 +257,7 @@ class CreateCharacterService {
   }
 }
 &nbsp;
-export default CreateCharacterService;
+export default UpdateCharacterService;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
