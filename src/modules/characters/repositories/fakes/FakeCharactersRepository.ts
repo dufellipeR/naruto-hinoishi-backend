@@ -52,6 +52,48 @@ class FakeCharactersRepository implements ICharactersRepository {
   public async findAll(): Promise<Character[]> {
     return this.characters;
   }
+
+  public async update({
+    id,
+    thumbnail,
+    type,
+    name,
+    desc,
+    power,
+    intelligence,
+    speed,
+    taijutsu,
+    ninjutsu,
+    genjutsu,
+    endurance,
+    willpower,
+    overall,
+  }: ICreateCharacterDTO): Promise<Character> {
+    this.characters = this.characters.filter(char => char.id !== id);
+
+    const character = new Character();
+
+    Object.assign(character, {
+      id,
+      thumbnail,
+      type,
+      name,
+      desc,
+      power,
+      intelligence,
+      speed,
+      taijutsu,
+      ninjutsu,
+      genjutsu,
+      endurance,
+      willpower,
+      overall,
+    });
+
+    this.characters.push(character);
+
+    return character;
+  }
 }
 
 export default FakeCharactersRepository;
