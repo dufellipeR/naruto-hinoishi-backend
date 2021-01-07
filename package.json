@@ -1,5 +1,5 @@
 {
-  "name": "GS-first-node-project",
+  "name": "Naruto-API",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/dufellipeR/GS-first-node-project.git",
@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "celebrate": "^13.0.4",
+    "chance": "^1.1.7",
     "class-transformer": "^0.3.1",
     "cors": "^2.8.5",
     "date-fns": "^2.16.1",

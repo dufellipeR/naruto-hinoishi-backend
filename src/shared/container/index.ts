@@ -9,10 +9,17 @@ import IUsersRepository from '@modules/user/repositories/IUsersRepository';
 import UsersRepository from '@modules/user/infra/typeorm/repositories/UsersRepository';
 import IUserTokensRepository from '@modules/user/repositories/IUserTokensRepository';
 import UserTokensRepository from '@modules/user/infra/typeorm/repositories/UserTokensRepository';
+import ICardsRepository from '@modules/cards/repositories/ICardsRepository';
+import CardsRepository from '@modules/cards/infra/typeorm/repositories/CardsRepository';
 
 container.registerSingleton<ICharactersRepository>(
   'CharactersRepository',
   CharactersRepository,
+);
+
+container.registerSingleton<ICardsRepository>(
+  'CardsRepository',
+  CardsRepository,
 );
 
 container.registerSingleton<IUsersRepository>(
