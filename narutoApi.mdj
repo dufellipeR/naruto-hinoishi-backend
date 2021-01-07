@@ -622,7 +622,7 @@
 										"$ref": "AAAAAAF21WW01M90III="
 									},
 									"edgePosition": 1,
-									"text": "CharacterCards"
+									"text": "CharacterCard"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -916,7 +916,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF21VBpu85pEe0="
 							},
-							"name": "CharacterCards",
+							"name": "CharacterCard",
 							"end1": {
 								"_type": "ERDRelationshipEnd",
 								"_id": "AAAAAAF21WW0089xNqo=",
