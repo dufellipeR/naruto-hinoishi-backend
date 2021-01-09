@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
+import generateTag from '@shared/utils/generateTag';
 import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 import User from '../infra/typeorm/entities/User';
@@ -30,9 +31,12 @@ export default class CreateUserService {
 
     const hashedPassword = await this.hashProvider.generateHash(password);
 
+    const tag = generateTag(name);
+
     const user = await this.usersRepository.create({
       name,
       email,
+      tag,
       password: hashedPassword,
     });
 
