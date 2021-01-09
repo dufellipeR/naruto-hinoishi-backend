@@ -1,15 +1,14 @@
-import AppError from '@shared/errors/AppError';
 import overallCalc from './overallCalc';
 
 describe(' Calculating Overall', () => {
   it('should be able to return an overall', () => {
-    const power = 80;
+    const strength = 80;
     const intelligence = 90;
     const speed = 80;
     const taijutsu = 80;
     const ninjutsu = 40;
     const genjutsu = 80;
-    const endurance = 80;
+    const stamina = 80;
     const willpower = 10;
 
     const total = 80 + 40 + 80 + 80 + 10 + 80 + 80 + 90;
@@ -18,13 +17,13 @@ describe(' Calculating Overall', () => {
 
     expect(
       overallCalc({
-        power,
+        strength,
         intelligence,
         speed,
         taijutsu,
         ninjutsu,
         genjutsu,
-        endurance,
+        stamina,
         willpower,
       }),
     ).toEqual(media);

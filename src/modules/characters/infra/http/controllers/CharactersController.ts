@@ -12,13 +12,13 @@ export default class CharactersController {
       type,
       name,
       desc,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
     } = req.body;
 
@@ -29,13 +29,13 @@ export default class CharactersController {
       type,
       name,
       desc,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
     });
 
@@ -68,13 +68,13 @@ export default class CharactersController {
       name,
       desc,
       stat_id,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
     } = req.body;
 
@@ -87,13 +87,13 @@ export default class CharactersController {
       name,
       desc,
       stat_id,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
     });
 

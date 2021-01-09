@@ -1,9 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-
-// import AppError from '@shared/errors/AppError';
-
 import overallCalc from '@shared/utils/overallCalc';
-import AppError from '@shared/errors/AppError';
 import Character from '../infra/typeorm/entities/Characters';
 import ICharactersRepository from '../repositories/ICharactersRepository';
 
@@ -12,13 +8,13 @@ interface IRequestDTO {
   type: string;
   name: string;
   desc: string;
-  power: number;
+  strength: number;
   intelligence: number;
   speed: number;
   taijutsu: number;
   ninjutsu: number;
   genjutsu: number;
-  endurance: number;
+  stamina: number;
   willpower: number;
 }
 
@@ -34,23 +30,23 @@ class CreateCharacterService {
     type,
     name,
     desc,
-    power,
+    strength,
     intelligence,
     speed,
     taijutsu,
     ninjutsu,
     genjutsu,
-    endurance,
+    stamina,
     willpower,
   }: IRequestDTO): Promise<Character> {
-    const overall = overallCalc({
-      power,
+    const power = overallCalc({
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
     });
 
@@ -59,15 +55,15 @@ class CreateCharacterService {
       type,
       name,
       desc,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
-      overall,
+      power,
     });
 
     return character;

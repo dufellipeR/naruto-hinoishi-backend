@@ -51,7 +51,7 @@ class FakeCardsRepository implements ICardsRepository {
     const cardIds: IPickModel[] = [];
 
     this.cards.forEach(card => {
-      cardIds.push({ id: card.id, overall: 50 });
+      cardIds.push({ id: card.id, power: 50 });
     });
 
     return cardIds;
@@ -65,7 +65,7 @@ class FakeCardsRepository implements ICardsRepository {
         thumbnail: 'char-thumbnail',
         type: 'default',
         name: 'char-name',
-        overall: 90,
+        power: 90,
       };
     });
     return shortcards;

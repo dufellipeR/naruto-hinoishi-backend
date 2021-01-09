@@ -48,7 +48,7 @@ class CardsRepository implements ICardsRepository {
 
   public async findAllIds(): Promise<IPickModel[]> {
     const characters = await this.cardOrmRepository.query(
-      `SELECT characters.id, stats.overall
+      `SELECT characters.id, stats.power
       FROM characters
       INNER JOIN stats on characters.stat_id=stats.id
        `,
@@ -62,7 +62,7 @@ class CardsRepository implements ICardsRepository {
       cards.id,
       characters.thumbnail,
       characters.type,
-      characters.name, stats.overall
+      characters.name, stats.power
     FROM
       cards
     INNER JOIN characters

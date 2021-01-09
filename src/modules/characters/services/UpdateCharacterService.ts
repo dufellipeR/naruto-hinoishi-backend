@@ -1,9 +1,5 @@
 import { injectable, inject } from 'tsyringe';
-
-// import AppError from '@shared/errors/AppError';
-
 import overallCalc from '@shared/utils/overallCalc';
-import AppError from '@shared/errors/AppError';
 import Character from '../infra/typeorm/entities/Characters';
 import ICharactersRepository from '../repositories/ICharactersRepository';
 import IUpdateCharacterDTO from '../dtos/IUpdateCharacterDTO';
@@ -22,23 +18,23 @@ class UpdateCharacterService {
     name,
     desc,
     stat_id,
-    power,
+    strength,
     intelligence,
     speed,
     taijutsu,
     ninjutsu,
     genjutsu,
-    endurance,
+    stamina,
     willpower,
-  }: Omit<IUpdateCharacterDTO, 'overall'>): Promise<Character | undefined> {
-    const overall = overallCalc({
-      power,
+  }: Omit<IUpdateCharacterDTO, 'power'>): Promise<Character | undefined> {
+    const power = overallCalc({
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
     });
 
@@ -49,15 +45,15 @@ class UpdateCharacterService {
       name,
       desc,
       stat_id,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
-      overall,
+      power,
     });
 
     return character;

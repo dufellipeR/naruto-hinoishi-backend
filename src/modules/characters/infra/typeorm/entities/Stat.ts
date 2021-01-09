@@ -9,7 +9,7 @@ class Stat {
   id: string;
 
   @Column('int')
-  power: number;
+  strength: number;
 
   @Column('int')
   intelligence: number;
@@ -27,13 +27,13 @@ class Stat {
   genjutsu: number;
 
   @Column('int')
-  endurance: number;
+  stamina: number;
 
   @Column('int')
   willpower: number;
 
   @Column('int')
-  overall: number;
+  power: number;
 }
 
 export default Stat;

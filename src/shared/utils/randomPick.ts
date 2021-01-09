@@ -1,6 +1,6 @@
 export interface IPickModel {
   id: string;
-  overall: number;
+  power: number;
 }
 
 interface IRequestDTO {
@@ -15,7 +15,7 @@ const randomPick = ({ quantity, allIds }: IRequestDTO): string[] => {
   const addCharWeight = allIds.map(char => {
     return {
       ...char,
-      over: (100 - char.overall) / 1,
+      over: (100 - char.power) / 1,
     };
   });
 

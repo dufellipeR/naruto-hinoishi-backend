@@ -3,5 +3,5 @@ export default interface IShortCard {
   thumbnail: string;
   type: string;
   name: string;
-  overall: number;
+  power: number;
 }

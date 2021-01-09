@@ -17,15 +17,15 @@ describe('Show Character', () => {
       type: 'Classic',
       name: 'Rock Lee',
       desc: " Rock Lee  was a shinobi of Konohagakure's Hyūga clan.",
-      power: 46,
+      strength: 46,
       intelligence: 50,
       speed: 43,
       taijutsu: 49,
       ninjutsu: 45,
       genjutsu: 30,
-      endurance: 40,
+      stamina: 40,
       willpower: 30,
-      overall: 42,
+      power: 42,
     });
 
     const character = await showCharacter.execute(char2.id);

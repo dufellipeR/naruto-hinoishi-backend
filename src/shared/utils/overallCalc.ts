@@ -1,34 +1,34 @@
 import AppError from '@shared/errors/AppError';
 
 interface IRequestDTO {
-  power: number;
+  strength: number;
   intelligence: number;
   speed: number;
   taijutsu: number;
   ninjutsu: number;
   genjutsu: number;
-  endurance: number;
+  stamina: number;
   willpower: number;
 }
 
 export default function overallCalc({
-  power,
+  strength,
   intelligence,
   speed,
   taijutsu,
   ninjutsu,
   genjutsu,
-  endurance,
+  stamina,
   willpower,
 }: IRequestDTO): number {
   const maxNumber = Math.max(
-    power,
+    strength,
     intelligence,
     speed,
     taijutsu,
     ninjutsu,
     genjutsu,
-    endurance,
+    stamina,
     willpower,
   );
 
@@ -39,15 +39,15 @@ export default function overallCalc({
   }
 
   const total =
-    power +
+    strength +
     speed +
     intelligence +
     taijutsu +
     ninjutsu +
     genjutsu +
-    endurance +
+    stamina +
     willpower;
 
-  const overall = Math.round(total / 8);
-  return overall;
+  const power = Math.round(total / 8);
+  return power;
 }

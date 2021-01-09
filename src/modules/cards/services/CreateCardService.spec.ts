@@ -23,15 +23,15 @@ describe('Create Card ', () => {
       desc: `Kakashi Hatake (はたけカカシ, Hatake Kakashi) is a shinobi of
       Konohagakure's Hatake clan.
       Famed as Kakashi of the Sharingan (写輪眼のカカシ, Sharingan no Kakashi)`,
-      power: 70,
+      strength: 70,
       intelligence: 70,
       speed: 70,
       genjutsu: 70,
       ninjutsu: 70,
       taijutsu: 70,
-      endurance: 70,
+      stamina: 70,
       willpower: 70,
-      overall: 70,
+      power: 70,
     });
 
     const card = await createCard.execute({

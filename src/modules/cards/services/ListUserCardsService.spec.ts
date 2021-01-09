@@ -31,15 +31,15 @@ describe('List Random User CArds', () => {
       name: 'Neji Hyūga',
       desc:
         " Neji Hyūga (日向ネジ, Hyūga Neji) was a shinobi of Konohagakure's Hyūga clan.",
-      power: 46,
+      strength: 46,
       intelligence: 50,
       speed: 43,
       taijutsu: 49,
       ninjutsu: 45,
       genjutsu: 30,
-      endurance: 40,
+      stamina: 40,
       willpower: 30,
-      overall: 42,
+      power: 42,
     });
 
     await fakeCardsRepository.create({

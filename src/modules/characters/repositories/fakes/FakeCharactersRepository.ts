@@ -1,4 +1,5 @@
 import ICreateCharacterDTO from '@modules/characters/dtos/ICreateCharacterDTO';
+import IUpdateCharacterDTO from '@modules/characters/dtos/IUpdateCharacterDTO';
 import Character from '@modules/characters/infra/typeorm/entities/Characters';
 import { v4 as uuid } from 'uuid';
 import ICharactersRepository from '../ICharactersRepository';
@@ -11,15 +12,15 @@ class FakeCharactersRepository implements ICharactersRepository {
     type,
     name,
     desc,
-    power,
+    strength,
     intelligence,
     speed,
     taijutsu,
     ninjutsu,
     genjutsu,
-    endurance,
+    stamina,
     willpower,
-    overall,
+    power,
   }: ICreateCharacterDTO): Promise<Character> {
     const character = new Character();
 
@@ -29,15 +30,15 @@ class FakeCharactersRepository implements ICharactersRepository {
       type,
       name,
       desc,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
-      overall,
+      power,
     });
 
     this.characters.push(character);
@@ -59,16 +60,16 @@ class FakeCharactersRepository implements ICharactersRepository {
     type,
     name,
     desc,
-    power,
+    strength,
     intelligence,
     speed,
     taijutsu,
     ninjutsu,
     genjutsu,
-    endurance,
+    stamina,
     willpower,
-    overall,
-  }: ICreateCharacterDTO): Promise<Character> {
+    power,
+  }: IUpdateCharacterDTO): Promise<Character> {
     this.characters = this.characters.filter(char => char.id !== id);
 
     const character = new Character();
@@ -79,15 +80,15 @@ class FakeCharactersRepository implements ICharactersRepository {
       type,
       name,
       desc,
-      power,
+      strength,
       intelligence,
       speed,
       taijutsu,
       ninjutsu,
       genjutsu,
-      endurance,
+      stamina,
       willpower,
-      overall,
+      power,
     });
 
     this.characters.push(character);

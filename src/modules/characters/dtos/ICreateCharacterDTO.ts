@@ -3,13 +3,13 @@ export default interface ICreateCharacterDTO {
   type: string;
   name: string;
   desc: string;
-  power: number;
+  strength: number;
   intelligence: number;
   speed: number;
   taijutsu: number;
   ninjutsu: number;
   genjutsu: number;
-  endurance: number;
+  stamina: number;
   willpower: number;
-  overall: number;
+  power: number;
 }
