@@ -21,6 +21,7 @@ describe('List Random User CArds', () => {
       email: 'ex@ample.com.br',
       name: 'user1',
       password: '123123',
+      tag: 'user#4493',
     });
 
     const char1 = await fakeCharactersRepository.create({

@@ -7,6 +7,12 @@ import IUsersRepository from '../IUsersRepository';
 class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
 
+  public async findByTag(tag: string): Promise<User | undefined> {
+    const findUser = this.users.find(user => user.tag === tag);
+
+    return findUser;
+  }
+
   public async findById(id: string): Promise<User | undefined> {
     const findUser = this.users.find(user => user.id === id);
 

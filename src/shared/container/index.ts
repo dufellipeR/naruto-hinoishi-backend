@@ -11,6 +11,8 @@ import IUserTokensRepository from '@modules/user/repositories/IUserTokensReposit
 import UserTokensRepository from '@modules/user/infra/typeorm/repositories/UserTokensRepository';
 import ICardsRepository from '@modules/cards/repositories/ICardsRepository';
 import CardsRepository from '@modules/cards/infra/typeorm/repositories/CardsRepository';
+import FriendshipsRepository from '@modules/friendship/infra/typeorm/repositories/FriendshipsRepository';
+import IFriendshipsRepository from '@modules/friendship/repositories/IFriendshipsRepository';
 
 container.registerSingleton<ICharactersRepository>(
   'CharactersRepository',
@@ -20,6 +22,11 @@ container.registerSingleton<ICharactersRepository>(
 container.registerSingleton<ICardsRepository>(
   'CardsRepository',
   CardsRepository,
+);
+
+container.registerSingleton<IFriendshipsRepository>(
+  'FriendshipsRepository',
+  FriendshipsRepository,
 );
 
 container.registerSingleton<IUsersRepository>(
