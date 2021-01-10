@@ -17,6 +17,9 @@ class User {
   tag: string;
 
   @Column()
+  power: number;
+
+  @Column()
   name: string;
 
   @Column()
