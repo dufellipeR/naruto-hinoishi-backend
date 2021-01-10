@@ -38,6 +38,7 @@ export default class CreateUserService {
       email,
       tag,
       password: hashedPassword,
+      power: 0,
     });
 
     return user;

@@ -1,5 +1,6 @@
 import CreateRandomCardService from '@modules/cards/services/CreateRandomCardService';
 import ListUserCardsService from '@modules/cards/services/ListUserCardsService';
+import UpdatePowerService from '@modules/user/services/UpdatePowerService';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -9,8 +10,11 @@ export default class RandomCardsController {
     const { quantity } = req.body;
 
     const createRandomCards = container.resolve(CreateRandomCardService);
+    const updateUserPower = container.resolve(UpdatePowerService);
 
     const cards = await createRandomCards.execute({ quantity, user_id });
+
+    await updateUserPower.execute({ user_id });
 
     return res.json(cards);
   }

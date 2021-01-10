@@ -29,9 +29,6 @@ const randomPick = ({ quantity, allIds }: IRequestDTO): string[] => {
       arraySorteio.push(char.id);
     }
   });
-
-  console.log(arraySorteio);
-
   for (i = 0; i < quantity; i++) {
     const posicaoSorteada = Math.floor(Math.random() * arraySorteio.length);
     const pick = arraySorteio[posicaoSorteada];

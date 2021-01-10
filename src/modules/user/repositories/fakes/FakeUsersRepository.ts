@@ -1,4 +1,5 @@
 import ICreateUserDTO from '@modules/user/dtos/ICreateUserDTO';
+import IUpdatePowerDTO from '@modules/user/dtos/IUpdatePowerDTO';
 import { v4 as uuid } from 'uuid';
 
 import User from '../../infra/typeorm/entities/User';
@@ -6,6 +7,23 @@ import IUsersRepository from '../IUsersRepository';
 
 class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
+
+  public async findAll(): Promise<User[]> {
+    return this.users;
+  }
+
+  public async updatePower({
+    user_id,
+    power,
+  }: IUpdatePowerDTO): Promise<User | undefined> {
+    const editUser = this.users.find(users => users.id === user_id);
+    console.log(power);
+
+    if (editUser) {
+      editUser.power = power;
+    }
+    return editUser;
+  }
 
   public async findByTag(tag: string): Promise<User | undefined> {
     const findUser = this.users.find(user => user.tag === tag);

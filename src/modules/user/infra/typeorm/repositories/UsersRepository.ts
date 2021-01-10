@@ -1,6 +1,7 @@
+import ICreateUserDTO from '@modules/user/dtos/ICreateUserDTO';
+import IUpdatePowerDTO from '@modules/user/dtos/IUpdatePowerDTO';
+import IUsersRepository from '@modules/user/repositories/IUsersRepository';
 import { getRepository, Repository } from 'typeorm';
-import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import User from '../entities/User';
 
 class UsersRepository implements IUsersRepository {
@@ -8,6 +9,30 @@ class UsersRepository implements IUsersRepository {
 
   constructor() {
     this.ormRepository = getRepository(User);
+  }
+
+  public async findAll(): Promise<User[]> {
+    const users = await this.ormRepository.find({
+      order: {
+        power: 'DESC',
+      },
+    });
+
+    return users;
+  }
+
+  public async updatePower({
+    power,
+    user_id,
+  }: IUpdatePowerDTO): Promise<User | undefined> {
+    const user = await this.ormRepository.findOne(user_id);
+
+    if (user) {
+      user.power = power;
+      await this.ormRepository.save(user);
+    }
+
+    return user;
   }
 
   public async findByTag(tag: string): Promise<User | undefined> {

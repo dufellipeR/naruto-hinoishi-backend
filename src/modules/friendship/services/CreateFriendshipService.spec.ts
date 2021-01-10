@@ -22,6 +22,7 @@ describe('Create Friendship ', () => {
       email: 'dicey@gmail.com',
       password: 'some-password',
       tag: 'dice#4355',
+      power: 0,
     });
 
     const user2 = await fakeUsersRepository.create({
@@ -29,6 +30,7 @@ describe('Create Friendship ', () => {
       email: 'zero@gmail.com',
       password: 'some-password',
       tag: 'zero#4355',
+      power: 0,
     });
 
     const friendship = await createFriendship.execute({
