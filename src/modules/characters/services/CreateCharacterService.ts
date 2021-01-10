@@ -4,7 +4,7 @@ import Character from '../infra/typeorm/entities/Characters';
 import ICharactersRepository from '../repositories/ICharactersRepository';
 
 interface IRequestDTO {
-  thumbnail: string;
+  render: string;
   type: string;
   name: string;
   desc: string;
@@ -26,7 +26,7 @@ class CreateCharacterService {
   ) {}
 
   public async execute({
-    thumbnail,
+    render,
     type,
     name,
     desc,
@@ -51,7 +51,7 @@ class CreateCharacterService {
     });
 
     const character = await this.charactersRepository.create({
-      thumbnail,
+      render,
       type,
       name,
       desc,

@@ -14,7 +14,7 @@ describe('Create Character ', () => {
 
   it('should be able to create a new character', async () => {
     const character = await createCharacter.execute({
-      thumbnail: 'google@images.com',
+      render: 'google@images.com',
       type: 'default',
       name: 'Kakakashi Hatake',
       desc: `Kakashi Hatake (はたけカカシ, Hatake Kakashi) is a shinobi of

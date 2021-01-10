@@ -26,7 +26,7 @@ describe('List Random User CArds', () => {
     });
 
     const char1 = await fakeCharactersRepository.create({
-      thumbnail:
+      render:
         'https://www.nicepng.com/png/detail/356-3564607_neji-hyuga-neji-hyuga-part-1.png',
       type: 'Classic',
       name: 'Neji Hyūga',

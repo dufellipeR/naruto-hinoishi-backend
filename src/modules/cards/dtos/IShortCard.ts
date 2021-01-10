@@ -1,6 +1,6 @@
 export default interface IShortCard {
   id: string;
-  thumbnail: string;
+  render: string;
   type: string;
   name: string;
   power: number;

@@ -8,7 +8,7 @@ class FakeCharactersRepository implements ICharactersRepository {
   private characters: Character[] = [];
 
   public async create({
-    thumbnail,
+    render,
     type,
     name,
     desc,
@@ -29,7 +29,7 @@ class FakeCharactersRepository implements ICharactersRepository {
 
     Object.assign(character, {
       id: uuid(),
-      thumbnail,
+      render,
       type,
       name,
       desc,
@@ -59,7 +59,7 @@ class FakeCharactersRepository implements ICharactersRepository {
 
   public async update({
     id,
-    thumbnail,
+    render,
     type,
     name,
     desc,
@@ -79,7 +79,7 @@ class FakeCharactersRepository implements ICharactersRepository {
 
     Object.assign(character, {
       id,
-      thumbnail,
+      render,
       type,
       name,
       desc,

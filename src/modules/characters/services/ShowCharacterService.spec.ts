@@ -13,7 +13,7 @@ describe('Show Character', () => {
 
   it('should be able to show a character', async () => {
     const char2 = await fakeCharacterRepository.create({
-      thumbnail: 'www.nicepng.com/png/lee',
+      render: 'www.nicepng.com/png/lee',
       type: 'Classic',
       name: 'Rock Lee',
       desc: " Rock Lee  was a shinobi of Konohagakure's Hyūga clan.",

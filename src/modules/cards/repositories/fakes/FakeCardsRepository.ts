@@ -62,7 +62,7 @@ class FakeCardsRepository implements ICardsRepository {
     const shortcards: IShortCard[] = searchCards.map(card => {
       return {
         id: card.id,
-        thumbnail: 'char-thumbnail',
+        render: 'char-render',
         type: 'default',
         name: 'char-name',
         power: 90,

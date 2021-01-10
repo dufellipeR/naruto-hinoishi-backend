@@ -16,7 +16,7 @@ class Character {
   id: string;
 
   @Column()
-  thumbnail: string;
+  render: string;
 
   @Column()
   type: string;

@@ -12,7 +12,7 @@ describe('List Characters', () => {
 
   it('should be able to list the characters', async () => {
     const char1 = await fakeCharacterRepository.create({
-      thumbnail:
+      render:
         'https://www.nicepng.com/png/detail/356-3564607_neji-hyuga-neji-hyuga-part-1.png',
       type: 'Classic',
       name: 'Neji Hyūga',
@@ -30,7 +30,7 @@ describe('List Characters', () => {
     });
 
     const char2 = await fakeCharacterRepository.create({
-      thumbnail: 'www.nicepng.com/png/lee',
+      render: 'www.nicepng.com/png/lee',
       type: 'Classic',
       name: 'Rock Lee',
       desc: " Rock Lee  was a shinobi of Konohagakure's Hyūga clan.",

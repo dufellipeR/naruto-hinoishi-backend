@@ -14,7 +14,7 @@ describe('Update Character ', () => {
 
   it('should be able to update a character', async () => {
     const char1 = await fakeCharactersRepository.create({
-      thumbnail: 'google@images.com',
+      render: 'google@images.com',
       type: 'default',
       name: 'Kakakashi Hatake',
       desc: `Kakashi Hatake (はたけカカシ, Hatake Kakashi) is a shinobi of
@@ -33,7 +33,7 @@ describe('Update Character ', () => {
 
     await updateCharacter.execute({
       id: char1.id,
-      thumbnail: 'google@images.com',
+      render: 'google@images.com',
       type: 'default',
       name: 'Asuma Sarutobi',
       desc: `Kakashi Hatake (はたけカカシ, Hatake Kakashi) is a shinobi of
