@@ -19,6 +19,7 @@ describe('List User Friends', () => {
       name: 'user1',
       password: '123123',
       tag: 'user#3302',
+      power: 0,
     });
 
     const user2 = await fakeUsersRepository.create({
@@ -26,6 +27,7 @@ describe('List User Friends', () => {
       name: 'user2',
       password: '123123',
       tag: 'user#3554',
+      power: 0,
     });
 
     const user3 = await fakeUsersRepository.create({
@@ -33,6 +35,7 @@ describe('List User Friends', () => {
       name: 'user2',
       password: '123123',
       tag: 'user#3554',
+      power: 0,
     });
 
     await fakeFriendshipRepository.create({

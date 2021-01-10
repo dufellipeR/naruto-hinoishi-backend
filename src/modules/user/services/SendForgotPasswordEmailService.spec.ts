@@ -30,6 +30,7 @@ describe('SendForgotPasswordEmail', () => {
       email: 'johndoe@example.com',
       password: '123456',
       tag: 'john#4432',
+      power: 0,
     });
 
     await sendForgotPasswordEmail.execute({ email: 'johndoe@example.com' });
@@ -51,6 +52,7 @@ describe('SendForgotPasswordEmail', () => {
       email: 'johndoe@example.com',
       password: '123456',
       tag: 'john#4432',
+      power: 0,
     });
 
     await sendForgotPasswordEmail.execute({ email: 'johndoe@example.com' });

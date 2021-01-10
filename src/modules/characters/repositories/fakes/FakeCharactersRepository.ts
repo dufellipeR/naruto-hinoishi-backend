@@ -24,6 +24,9 @@ class FakeCharactersRepository implements ICharactersRepository {
   }: ICreateCharacterDTO): Promise<Character> {
     const character = new Character();
 
+    const rightPower: number = power;
+    console.log(' FakeRepo power', rightPower);
+
     Object.assign(character, {
       id: uuid(),
       thumbnail,
@@ -38,7 +41,7 @@ class FakeCharactersRepository implements ICharactersRepository {
       genjutsu,
       stamina,
       willpower,
-      power,
+      power: rightPower,
     });
 
     this.characters.push(character);

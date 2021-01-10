@@ -23,6 +23,7 @@ describe('CreateUser', () => {
       email: 'johndoe@example.com',
       password: '123456',
       tag: 'john#9909',
+      power: 0,
     });
 
     const response = await authenticateUser.execute({
@@ -49,6 +50,7 @@ describe('CreateUser', () => {
       email: 'johndoe@example.com',
       password: '123456',
       tag: 'john#2212',
+      power: 0,
     });
 
     await expect(
