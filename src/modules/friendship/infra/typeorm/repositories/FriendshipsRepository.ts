@@ -25,9 +25,13 @@ class FriendshipsRepository implements IFriendshipsRepository {
   }
 
   public async findAllUserFriends(user1_id: string): Promise<Friendship[]> {
-    const friends = await this.ormRepository.find({
-      where: { user1_id },
-    });
+    const friends = await this.ormRepository.query(
+      `SELECT friendship.id, users.power, users.name
+      FROM friendship
+      INNER JOIN users on friendship.user2_id=users.id
+      WHERE friendship.user1_id='${user1_id}'
+      ORDER BY users.power DESC`,
+    );
 
     return friends;
   }
