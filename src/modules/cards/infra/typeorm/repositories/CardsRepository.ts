@@ -60,7 +60,7 @@ class CardsRepository implements ICardsRepository {
     const cards = await this.cardOrmRepository.query(
       `SELECT
       cards.id,
-      characters.thumbnail,
+      characters.render,
       characters.type,
       characters.name, stats.power
     FROM

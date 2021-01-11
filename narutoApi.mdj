@@ -1249,7 +1249,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF21VBpu85pEe0="
 							},
-							"name": "thumbnail"
+							"name": "render",
+							"nullable": true
 						},
 						{
 							"_type": "ERDColumn",

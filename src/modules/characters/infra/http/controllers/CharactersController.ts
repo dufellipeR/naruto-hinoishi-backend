@@ -1,4 +1,5 @@
 import CreateCharacterService from '@modules/characters/services/CreateCharacterService';
+import ImportCharactersService from '@modules/characters/services/ImportCharactersService';
 import ListCharactersService from '@modules/characters/services/ListCharactersService';
 import ShowCharacterService from '@modules/characters/services/ShowCharacterService';
 import UpdateCharacterService from '@modules/characters/services/UpdateCharacterService';
@@ -6,9 +7,18 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 export default class CharactersController {
+  public async import(req: Request, res: Response): Promise<Response> {
+    const { file } = req;
+    const importCharacters = container.resolve(ImportCharactersService);
+
+    const characters = await importCharacters.execute(file.path);
+
+    return res.json(characters);
+  }
+
   public async create(req: Request, res: Response): Promise<Response> {
     const {
-      thumbnail,
+      render,
       type,
       name,
       desc,
@@ -25,7 +35,7 @@ export default class CharactersController {
     const createCharacter = container.resolve(CreateCharacterService);
 
     const character = await createCharacter.execute({
-      thumbnail,
+      render,
       type,
       name,
       desc,
@@ -63,7 +73,7 @@ export default class CharactersController {
   public async update(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const {
-      thumbnail,
+      render,
       type,
       name,
       desc,
@@ -82,7 +92,7 @@ export default class CharactersController {
 
     const character = await updateCharacter.execute({
       id,
-      thumbnail,
+      render,
       type,
       name,
       desc,

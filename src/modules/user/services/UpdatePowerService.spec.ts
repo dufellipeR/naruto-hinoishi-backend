@@ -29,7 +29,7 @@ describe('Should be able to Update User Power', () => {
     });
 
     const char1 = await fakeCharactersRepository.create({
-      thumbnail: 'google@images.com',
+      render: 'google@images.com',
       type: 'default',
       name: 'Kakakashi Hatake',
       desc: `Kakashi Hatake (はたけカカシ, Hatake Kakashi) is a shinobi of

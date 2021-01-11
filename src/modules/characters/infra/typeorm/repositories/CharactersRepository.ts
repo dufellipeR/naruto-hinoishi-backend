@@ -16,7 +16,7 @@ class CharactersRepository implements ICharactersRepository {
   }
 
   public async create({
-    thumbnail,
+    render,
     type,
     name,
     desc,
@@ -45,7 +45,7 @@ class CharactersRepository implements ICharactersRepository {
     await this.statOrmRepository.save(stat);
 
     const character = this.characterOrmRepository.create({
-      thumbnail,
+      render,
       type,
       name,
       desc,
@@ -75,7 +75,7 @@ class CharactersRepository implements ICharactersRepository {
 
   public async update({
     id,
-    thumbnail,
+    render,
     type,
     name,
     desc,
@@ -91,7 +91,7 @@ class CharactersRepository implements ICharactersRepository {
     power,
   }: IUpdateCharacterDTO): Promise<Character | undefined> {
     await this.characterOrmRepository.update(id, {
-      thumbnail,
+      render,
       type,
       name,
       desc,

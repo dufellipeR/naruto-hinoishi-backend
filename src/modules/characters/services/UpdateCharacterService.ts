@@ -13,7 +13,7 @@ class UpdateCharacterService {
 
   public async execute({
     id,
-    thumbnail,
+    render,
     type,
     name,
     desc,
@@ -40,7 +40,7 @@ class UpdateCharacterService {
 
     const character = await this.charactersRepository.update({
       id,
-      thumbnail,
+      render,
       type,
       name,
       desc,
