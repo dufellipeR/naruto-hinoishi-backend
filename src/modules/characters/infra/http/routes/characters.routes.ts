@@ -1,10 +1,16 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 // import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
+
+import multer from 'multer';
+
+import uploadConfig from '@config/upload';
 import CharactersController from '../controllers/CharactersController';
 
 const charactersRouter = Router();
 const charactersController = new CharactersController();
+
+const upload = multer(uploadConfig.multer);
 
 // charactersRouter.use(ensureAuthenticated);
 
@@ -12,7 +18,7 @@ charactersRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      thumbnail: Joi.string(),
+      render: Joi.string(),
       type: Joi.string().required(),
       name: Joi.string().required(),
       desc: Joi.string().required(),
@@ -44,7 +50,7 @@ charactersRouter.put(
   '/:id',
   celebrate({
     [Segments.BODY]: {
-      thumbnail: Joi.string().required(),
+      render: Joi.string().required(),
       type: Joi.string().required(),
       name: Joi.string().required(),
       desc: Joi.string().required(),
@@ -60,6 +66,12 @@ charactersRouter.put(
     },
   }),
   charactersController.update,
+);
+
+charactersRouter.post(
+  '/import',
+  upload.single('file'),
+  charactersController.import,
 );
 
 export default charactersRouter;
