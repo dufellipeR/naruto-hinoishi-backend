@@ -11,5 +11,5 @@ export default interface ICreateCharacterDTO {
   genjutsu: number;
   stamina: number;
   willpower: number;
-  power?: number;
+  power: number;
 }
