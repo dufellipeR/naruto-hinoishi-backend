@@ -1,8 +1,6 @@
-export default interface ICreateCharacterDTO {
-  render?: string;
-  type: string;
+export default interface ICreateKekkeiDTO {
   name: string;
-  desc?: string;
+  icon?: string;
   strength: number;
   intelligence: number;
   speed: number;
@@ -11,5 +9,4 @@ export default interface ICreateCharacterDTO {
   genjutsu: number;
   stamina: number;
   willpower: number;
-  power: number;
 }

@@ -13,6 +13,20 @@ import ICardsRepository from '@modules/cards/repositories/ICardsRepository';
 import CardsRepository from '@modules/cards/infra/typeorm/repositories/CardsRepository';
 import FriendshipsRepository from '@modules/friendship/infra/typeorm/repositories/FriendshipsRepository';
 import IFriendshipsRepository from '@modules/friendship/repositories/IFriendshipsRepository';
+import IKekkeiRepository from '@modules/kekkei/repositories/IKekkeiRepository';
+import KekkeiRepository from '@modules/kekkei/infra/typeorm/repositories/KekkeiRepository';
+import ICharKekkeiRepository from '@modules/char_kg/repositories/ICharKekkeiRepository';
+import CharKekkeiRepository from '@modules/char_kg/infra/typeorm/repositories/CharKekkeiRepository';
+
+container.registerSingleton<ICharKekkeiRepository>(
+  'CharKekkeiRepository',
+  CharKekkeiRepository,
+);
+
+container.registerSingleton<IKekkeiRepository>(
+  'KekkeiRepository',
+  KekkeiRepository,
+);
 
 container.registerSingleton<ICharactersRepository>(
   'CharactersRepository',
