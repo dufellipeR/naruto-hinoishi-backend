@@ -17,6 +17,20 @@ import IKekkeiRepository from '@modules/kekkei/repositories/IKekkeiRepository';
 import KekkeiRepository from '@modules/kekkei/infra/typeorm/repositories/KekkeiRepository';
 import ICharKekkeiRepository from '@modules/char_kg/repositories/ICharKekkeiRepository';
 import CharKekkeiRepository from '@modules/char_kg/infra/typeorm/repositories/CharKekkeiRepository';
+import ICharAffiliationRepository from '@modules/char_aft/repositories/ICharAffiliationRepository';
+import CharAffiliationRepository from '@modules/char_aft/infra/typeorm/repositories/CharAffiliationRepository';
+import IAffiliationRepository from '@modules/affiliation/repositories/IAffiliationRepository';
+import AffiliationRepository from '@modules/affiliation/infra/typeorm/repositories/AffiliationRepository';
+
+container.registerSingleton<ICharAffiliationRepository>(
+  'CharAffiliationRepository',
+  CharAffiliationRepository,
+);
+
+container.registerSingleton<IAffiliationRepository>(
+  'AffiliationRepository',
+  AffiliationRepository,
+);
 
 container.registerSingleton<ICharKekkeiRepository>(
   'CharKekkeiRepository',
