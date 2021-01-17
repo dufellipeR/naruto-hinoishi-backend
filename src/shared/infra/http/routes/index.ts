@@ -1,6 +1,8 @@
+import affiliationRouter from '@modules/affiliation/infra/http/routes/affiliation.routes';
 import cardsRouter from '@modules/cards/infra/http/routes/cards.routes';
 import randomCardsRouter from '@modules/cards/infra/http/routes/randomcards.routes';
 import charactersRouter from '@modules/characters/infra/http/routes/characters.routes';
+import charAffiliationRouter from '@modules/char_aft/infra/http/routes/charkekkei.routes';
 import charkekkeiRouter from '@modules/char_kg/infra/http/routes/charkekkei.routes';
 import friendshipRouter from '@modules/friendship/infra/http/routes/friendship.routes';
 import kekkeiRouter from '@modules/kekkei/infra/http/routes/kekkei.routes';
@@ -11,6 +13,8 @@ import { Router } from 'express';
 
 const routes = Router();
 
+routes.use('/affiliation', affiliationRouter);
+routes.use('/charaffiliation', charAffiliationRouter);
 routes.use('/kekkei', kekkeiRouter);
 routes.use('/charkekkei', charkekkeiRouter);
 routes.use('/character', charactersRouter);
