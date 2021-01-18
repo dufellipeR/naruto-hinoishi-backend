@@ -25,7 +25,6 @@ class FakeCharactersRepository implements ICharactersRepository {
     const character = new Character();
 
     const rightPower: number = power;
-    console.log(' FakeRepo power', rightPower);
 
     Object.assign(character, {
       id: uuid(),
