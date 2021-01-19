@@ -25,6 +25,17 @@ import IClanRepository from '@modules/clan/repositories/IClanRepository';
 import ICharClanRepository from '@modules/char_clan/repositories/ICharClanRepository';
 import ClanRepository from '@modules/clan/infra/typeorm/repositories/ClanRepository';
 import CharClanRepository from '@modules/char_clan/infra/typeorm/repositories/CharClanRepository';
+import TeamRepository from '@modules/team/infra/typeorm/repositories/TeamRepository';
+import ITeamRepository from '@modules/team/repositories/ITeamRepository';
+import ICharTeamRepository from '@modules/char_team/repositories/ICharTeamRepository';
+import CharTeamRepository from '@modules/char_team/infra/typeorm/repositories/CharTeamRepository';
+
+container.registerSingleton<ICharTeamRepository>(
+  'CharTeamRepository',
+  CharTeamRepository,
+);
+
+container.registerSingleton<ITeamRepository>('TeamRepository', TeamRepository);
 
 container.registerSingleton<ICharClanRepository>(
   'CharClanRepository',
