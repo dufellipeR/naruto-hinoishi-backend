@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
-import ClanController from '../controllers/ClanController';
+import TeamController from '../controllers/TeamController';
 // import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
 
-const clanRouter = Router();
-const clanController = new ClanController();
+const teamRouter = Router();
+const teamController = new TeamController();
 
-// clanRouter.use(ensureAuthenticated);
+// teamRouter.use(ensureAuthenticated);
 
-clanRouter.post(
+teamRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
@@ -24,38 +24,38 @@ clanRouter.post(
       willpower: Joi.number().required(),
     },
   }),
-  clanController.create,
+  teamController.create,
 );
-clanRouter.get('/', clanController.index);
+teamRouter.get('/', teamController.index);
 
-clanRouter.get(
-  '/:clan_id/',
+teamRouter.get(
+  '/:team_id/',
   celebrate({
     [Segments.QUERY]: {
-      clan_id: Joi.string(),
+      team_id: Joi.string(),
     },
   }),
-  clanController.show,
+  teamController.show,
 );
 
-clanRouter.put(
-  '/:clan_id',
+teamRouter.put(
+  '/:team_id',
   celebrate({
     [Segments.QUERY]: {
-      clan_id: Joi.string(),
+      team_id: Joi.string(),
     },
   }),
-  clanController.update,
+  teamController.update,
 );
 
-clanRouter.delete(
-  '/:clan_id/',
+teamRouter.delete(
+  '/:team_id/',
   celebrate({
     [Segments.QUERY]: {
-      clan_id: Joi.string(),
+      team_id: Joi.string(),
     },
   }),
-  clanController.delete,
+  teamController.delete,
 );
 
-export default clanRouter;
+export default teamRouter;

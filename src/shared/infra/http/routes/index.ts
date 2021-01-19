@@ -5,9 +5,11 @@ import charactersRouter from '@modules/characters/infra/http/routes/characters.r
 import charAffiliationRouter from '@modules/char_aft/infra/http/routes/charkekkei.routes';
 import charClanRouter from '@modules/char_clan/infra/http/routes/charclan.routes';
 import charkekkeiRouter from '@modules/char_kg/infra/http/routes/charkekkei.routes';
+import charTeamRouter from '@modules/char_team/infra/http/routes/charteam.routes';
 import clanRouter from '@modules/clan/infra/http/routes/clan.routes';
 import friendshipRouter from '@modules/friendship/infra/http/routes/friendship.routes';
 import kekkeiRouter from '@modules/kekkei/infra/http/routes/kekkei.routes';
+import teamRouter from '@modules/team/infra/http/routes/team.routes';
 import passwordRouter from '@modules/user/infra/http/routes/password.routes';
 import sessionsRouter from '@modules/user/infra/http/routes/sessions.routes';
 import usersRouter from '@modules/user/infra/http/routes/users.routes';
@@ -15,6 +17,8 @@ import { Router } from 'express';
 
 const routes = Router();
 
+routes.use('/team', teamRouter);
+routes.use('/charteam', charTeamRouter);
 routes.use('/clan', clanRouter);
 routes.use('/charclan', charClanRouter);
 routes.use('/affiliation', affiliationRouter);

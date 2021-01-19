@@ -29,7 +29,7 @@ affiliationRouter.post(
 affiliationRouter.get('/', affiliationController.index);
 
 affiliationRouter.get(
-  '/:id/',
+  '/:affiliation_id/',
   celebrate({
     [Segments.QUERY]: {
       affiliation_id: Joi.string(),
@@ -39,7 +39,7 @@ affiliationRouter.get(
 );
 
 affiliationRouter.put(
-  '/:id',
+  '/:affiliation_id',
   celebrate({
     [Segments.QUERY]: {
       affiliation_id: Joi.string(),
@@ -49,7 +49,7 @@ affiliationRouter.put(
 );
 
 affiliationRouter.delete(
-  '/:id/',
+  '/:affiliation_id/',
   celebrate({
     [Segments.QUERY]: {
       affiliation_id: Joi.string(),
