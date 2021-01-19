@@ -29,7 +29,7 @@ kekkeiRouter.post(
 kekkeiRouter.get('/', kekkeiController.index);
 
 kekkeiRouter.get(
-  '/:id/',
+  '/:kekkei_id/',
   celebrate({
     [Segments.QUERY]: {
       kekkei_id: Joi.string(),
@@ -39,7 +39,7 @@ kekkeiRouter.get(
 );
 
 kekkeiRouter.put(
-  '/:id',
+  '/:kekkei_id',
   celebrate({
     [Segments.QUERY]: {
       kekkei_id: Joi.string(),
@@ -49,7 +49,7 @@ kekkeiRouter.put(
 );
 
 kekkeiRouter.delete(
-  '/:id/',
+  '/:kekkei_id/',
   celebrate({
     [Segments.QUERY]: {
       kekkei_id: Joi.string(),

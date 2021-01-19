@@ -29,7 +29,7 @@ clanRouter.post(
 clanRouter.get('/', clanController.index);
 
 clanRouter.get(
-  '/:id/',
+  '/:clan_id/',
   celebrate({
     [Segments.QUERY]: {
       clan_id: Joi.string(),
@@ -39,7 +39,7 @@ clanRouter.get(
 );
 
 clanRouter.put(
-  '/:id',
+  '/:clan_id',
   celebrate({
     [Segments.QUERY]: {
       clan_id: Joi.string(),
@@ -49,7 +49,7 @@ clanRouter.put(
 );
 
 clanRouter.delete(
-  '/:id/',
+  '/:clan_id/',
   celebrate({
     [Segments.QUERY]: {
       clan_id: Joi.string(),
