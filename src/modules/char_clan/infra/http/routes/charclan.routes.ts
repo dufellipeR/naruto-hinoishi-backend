@@ -19,4 +19,15 @@ charClanRouter.post(
   charClanController.create,
 );
 
+charClanRouter.post(
+  '/bunch',
+  celebrate({
+    [Segments.BODY]: {
+      items: Joi.required(),
+      character_id: Joi.string().required(),
+    },
+  }),
+  charClanController.createBunch,
+);
+
 export default charClanRouter;

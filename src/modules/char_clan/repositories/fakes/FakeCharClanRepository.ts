@@ -1,3 +1,4 @@
+import ICreateBunchCharClanDTO from '@modules/char_clan/dtos/ICreateBunchChar_clanDTO';
 import ICreateCharClanDTO from '@modules/char_clan/dtos/ICreateChar_clanDTO';
 import Char_clan from '@modules/char_clan/infra/typeorm/entities/char_clan';
 import { v4 as uuid } from 'uuid';
@@ -21,6 +22,28 @@ class FakeCharClanRepository implements ICharClanRepository {
     this.char_clan.push(createChar_clan);
 
     return createChar_clan;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharClanDTO): Promise<Char_clan[]> {
+    const clans: Char_clan[] = [];
+    items.forEach(item => {
+      const charAft = new Char_clan();
+
+      const createChar_clan = Object.assign(charAft, {
+        id: uuid(),
+        kekkei_id: item.value,
+        character_id,
+      });
+
+      clans.push(createChar_clan);
+
+      this.char_clan.push(createChar_clan);
+    });
+
+    return clans;
   }
 
   public async findCharacterClans(character_id: string): Promise<Char_clan[]> {

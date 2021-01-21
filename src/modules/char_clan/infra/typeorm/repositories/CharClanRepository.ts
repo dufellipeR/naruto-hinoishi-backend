@@ -1,3 +1,4 @@
+import ICreateBunchCharClanDTO from '@modules/char_clan/dtos/ICreateBunchChar_clanDTO';
 import ICreateCharClanDTO from '@modules/char_clan/dtos/ICreateChar_clanDTO';
 import ICharClanRepository from '@modules/char_clan/repositories/ICharClanRepository';
 import { getRepository, Repository } from 'typeorm';
@@ -22,6 +23,25 @@ class CharClanRepository implements ICharClanRepository {
     await this.ormRepository.save(createChar_clan);
 
     return createChar_clan;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharClanDTO): Promise<Char_clan[]> {
+    const clans: Char_clan[] = [];
+    items.forEach(item => {
+      clans.push(
+        this.ormRepository.create({
+          clan_id: item.value,
+          character_id,
+        }),
+      );
+    });
+
+    await this.ormRepository.save(clans);
+
+    return clans;
   }
 
   public async findCharacterClans(character_id: string): Promise<Char_clan[]> {
