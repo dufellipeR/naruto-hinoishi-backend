@@ -49,10 +49,12 @@ class FakeKekkeiRepository implements IKekkeiRepository {
     return kekkei;
   }
 
-  public async delete(kekkei_genkai: Kekkei_genkai): Promise<void> {
+  public async delete(kekkei_genkai: Kekkei_genkai): Promise<Kekkei_genkai[]> {
     this.kekkeis = this.kekkeis.filter(
       kekkeig => kekkeig.id !== kekkei_genkai.id,
     );
+
+    return this.kekkeis;
   }
 
   public async update(
@@ -82,8 +84,6 @@ class FakeKekkeiRepository implements IKekkeiRepository {
       genjutsu,
       stamina,
       willpower,
-      created_at: kekkei.created_at,
-      updated_at: kekkei.updated_at,
     });
 
     return newKekkei;
