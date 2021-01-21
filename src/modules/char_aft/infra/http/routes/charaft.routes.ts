@@ -6,7 +6,7 @@ import CharAffiliationController from '../controllers/CharAffiliationController'
 const charAffiliationRouter = Router();
 const charAffiliationController = new CharAffiliationController();
 
-charAffiliationRouter.use(ensureAuthenticated);
+// charAffiliationRouter.use(ensureAuthenticated);
 
 charAffiliationRouter.post(
   '/',
@@ -17,6 +17,17 @@ charAffiliationRouter.post(
     },
   }),
   charAffiliationController.create,
+);
+
+charAffiliationRouter.post(
+  '/bunch',
+  celebrate({
+    [Segments.BODY]: {
+      items: Joi.required(),
+      character_id: Joi.string().required(),
+    },
+  }),
+  charAffiliationController.createBunch,
 );
 
 export default charAffiliationRouter;

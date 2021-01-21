@@ -1,3 +1,4 @@
+import ICreateBunchCharAftDTO from '@modules/char_aft/dtos/ICreateBunchChar_aftDTO';
 import ICreateCharAftDTO from '@modules/char_aft/dtos/ICreateChar_aftDTO';
 import ICharAffiliationRepository from '@modules/char_aft/repositories/ICharAffiliationRepository';
 import { getRepository, Repository } from 'typeorm';
@@ -22,6 +23,25 @@ class CharAffiliationRepository implements ICharAffiliationRepository {
     await this.ormRepository.save(createChar_aft);
 
     return createChar_aft;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharAftDTO): Promise<Char_aft[]> {
+    const afts: Char_aft[] = [];
+    items.forEach(item => {
+      afts.push(
+        this.ormRepository.create({
+          affiliation_id: item.value,
+          character_id,
+        }),
+      );
+    });
+
+    await this.ormRepository.save(afts);
+
+    return afts;
   }
 
   public async findCharacterAffiliations(

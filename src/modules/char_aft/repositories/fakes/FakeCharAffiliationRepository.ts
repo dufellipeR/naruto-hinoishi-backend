@@ -1,3 +1,4 @@
+import ICreateBunchCharAftDTO from '@modules/char_aft/dtos/ICreateBunchChar_aftDTO';
 import ICreateCharAftDTO from '@modules/char_aft/dtos/ICreateChar_aftDTO';
 import Char_aft from '@modules/char_aft/infra/typeorm/entities/char_aft';
 import { v4 as uuid } from 'uuid';
@@ -21,6 +22,28 @@ class FakeCharAffiliationRepository implements ICharAffiliationRepository {
     this.char_aft.push(createChar_aft);
 
     return createChar_aft;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharAftDTO): Promise<Char_aft[]> {
+    const afts: Char_aft[] = [];
+    items.forEach(item => {
+      const charAft = new Char_aft();
+
+      const createChar_aft = Object.assign(charAft, {
+        id: uuid(),
+        kekkei_id: item.value,
+        character_id,
+      });
+
+      afts.push(createChar_aft);
+
+      this.char_aft.push(createChar_aft);
+    });
+
+    return afts;
   }
 
   public async findCharacterAffiliations(
