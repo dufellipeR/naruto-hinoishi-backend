@@ -2,7 +2,7 @@ import affiliationRouter from '@modules/affiliation/infra/http/routes/affiliatio
 import cardsRouter from '@modules/cards/infra/http/routes/cards.routes';
 import randomCardsRouter from '@modules/cards/infra/http/routes/randomcards.routes';
 import charactersRouter from '@modules/characters/infra/http/routes/characters.routes';
-import charAffiliationRouter from '@modules/char_aft/infra/http/routes/charkekkei.routes';
+import charAffiliationRouter from '@modules/char_aft/infra/http/routes/charaft.routes';
 import charClanRouter from '@modules/char_clan/infra/http/routes/charclan.routes';
 import charkekkeiRouter from '@modules/char_kg/infra/http/routes/charkekkei.routes';
 import charTeamRouter from '@modules/char_team/infra/http/routes/charteam.routes';
