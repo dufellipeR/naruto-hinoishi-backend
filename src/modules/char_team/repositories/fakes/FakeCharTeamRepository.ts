@@ -1,3 +1,4 @@
+import ICreateBunchCharTeamDTO from '@modules/char_team/dtos/ICreateBunchChar_teamDTO';
 import ICreateCharTeamDTO from '@modules/char_team/dtos/ICreateChar_teamDTO';
 import Char_team from '@modules/char_team/infra/typeorm/entities/char_team';
 import { v4 as uuid } from 'uuid';
@@ -21,6 +22,28 @@ class FakeCharTeamRepository implements ICharTeamRepository {
     this.char_team.push(createChar_team);
 
     return createChar_team;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharTeamDTO): Promise<Char_team[]> {
+    const teams: Char_team[] = [];
+    items.forEach(item => {
+      const charTeam = new Char_team();
+
+      const createChar_team = Object.assign(charTeam, {
+        id: uuid(),
+        kekkei_id: item.value,
+        character_id,
+      });
+
+      teams.push(createChar_team);
+
+      this.char_team.push(createChar_team);
+    });
+
+    return teams;
   }
 
   public async findCharacterTeams(character_id: string): Promise<Char_team[]> {

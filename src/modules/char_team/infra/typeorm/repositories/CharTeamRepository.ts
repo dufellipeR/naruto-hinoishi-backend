@@ -1,3 +1,4 @@
+import ICreateBunchCharTeamDTO from '@modules/char_team/dtos/ICreateBunchChar_teamDTO';
 import ICreateCharTeamDTO from '@modules/char_team/dtos/ICreateChar_teamDTO';
 import ICharTeamRepository from '@modules/char_team/repositories/ICharTeamRepository';
 import { getRepository, Repository } from 'typeorm';
@@ -22,6 +23,25 @@ class CharTeamRepository implements ICharTeamRepository {
     await this.ormRepository.save(createChar_team);
 
     return createChar_team;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharTeamDTO): Promise<Char_team[]> {
+    const teams: Char_team[] = [];
+    items.forEach(item => {
+      teams.push(
+        this.ormRepository.create({
+          team_id: item.value,
+          character_id,
+        }),
+      );
+    });
+
+    await this.ormRepository.save(teams);
+
+    return teams;
   }
 
   public async findCharacterTeams(character_id: string): Promise<Char_team[]> {

@@ -19,4 +19,15 @@ charTeamRouter.post(
   charTeamController.create,
 );
 
+charTeamRouter.post(
+  '/bunch',
+  celebrate({
+    [Segments.BODY]: {
+      items: Joi.required(),
+      character_id: Joi.string().required(),
+    },
+  }),
+  charTeamController.createBunch,
+);
+
 export default charTeamRouter;
