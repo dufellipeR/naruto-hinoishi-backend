@@ -1,3 +1,4 @@
+import ICreateBunchCharkgDTO from '@modules/char_kg/dtos/ICreateBunchChar_kgDTO';
 import ICreateCharKgDTO from '@modules/char_kg/dtos/ICreateChar_kgDTO';
 import Char_kg from '@modules/char_kg/infra/typeorm/entities/char_kg';
 import { v4 as uuid } from 'uuid';
@@ -21,6 +22,28 @@ class FakeCharKekkeiRepository implements ICharKekkeiRepository {
     this.char_kg.push(createChar_kg);
 
     return createChar_kg;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharkgDTO): Promise<Char_kg[]> {
+    const kekkeis: Char_kg[] = [];
+    items.forEach(item => {
+      const Charkekkei = new Char_kg();
+
+      const createChar_kg = Object.assign(Charkekkei, {
+        id: uuid(),
+        kekkei_id: item.value,
+        character_id,
+      });
+
+      kekkeis.push(createChar_kg);
+
+      this.char_kg.push(createChar_kg);
+    });
+
+    return kekkeis;
   }
 
   public async findCharacterKekkeis(character_id: string): Promise<Char_kg[]> {

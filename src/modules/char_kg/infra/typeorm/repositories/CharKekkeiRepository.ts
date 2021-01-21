@@ -1,3 +1,4 @@
+import ICreateBunchCharkgDTO from '@modules/char_kg/dtos/ICreateBunchChar_kgDTO';
 import ICreateCharKgDTO from '@modules/char_kg/dtos/ICreateChar_kgDTO';
 import ICharKekkeiRepository from '@modules/char_kg/repositories/ICharKekkeiRepository';
 import { getRepository, Repository } from 'typeorm';
@@ -22,6 +23,25 @@ class CharKekkeiRepository implements ICharKekkeiRepository {
     await this.ormRepository.save(createChar_kg);
 
     return createChar_kg;
+  }
+
+  public async createBunch({
+    items,
+    character_id,
+  }: ICreateBunchCharkgDTO): Promise<Char_kg[]> {
+    const kekkeis: Char_kg[] = [];
+    items.forEach(item => {
+      kekkeis.push(
+        this.ormRepository.create({
+          kekkei_id: item.value,
+          character_id,
+        }),
+      );
+    });
+
+    await this.ormRepository.save(kekkeis);
+
+    return kekkeis;
   }
 
   public async findCharacterKekkeis(character_id: string): Promise<Char_kg[]> {

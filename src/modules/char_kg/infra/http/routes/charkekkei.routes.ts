@@ -6,7 +6,7 @@ import CharKekkeiController from '../controllers/CharKekkeiController';
 const charkekkeiRouter = Router();
 const charkekkeiController = new CharKekkeiController();
 
-charkekkeiRouter.use(ensureAuthenticated);
+// charkekkeiRouter.use(ensureAuthenticated);
 
 charkekkeiRouter.post(
   '/',
@@ -17,6 +17,17 @@ charkekkeiRouter.post(
     },
   }),
   charkekkeiController.create,
+);
+
+charkekkeiRouter.post(
+  '/bunch',
+  celebrate({
+    [Segments.BODY]: {
+      items: Joi.required(),
+      character_id: Joi.string().required(),
+    },
+  }),
+  charkekkeiController.createBunch,
 );
 
 export default charkekkeiRouter;
