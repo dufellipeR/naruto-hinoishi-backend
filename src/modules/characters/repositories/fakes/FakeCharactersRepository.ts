@@ -56,6 +56,12 @@ class FakeCharactersRepository implements ICharactersRepository {
     return this.characters;
   }
 
+  public async delete(char: Character): Promise<Character[]> {
+    this.characters = this.characters.filter(item => item.id !== char.id);
+
+    return this.characters;
+  }
+
   public async update({
     id,
     render,

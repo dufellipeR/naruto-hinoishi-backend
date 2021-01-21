@@ -73,6 +73,14 @@ class CharactersRepository implements ICharactersRepository {
     return characters;
   }
 
+  public async delete(char: Character): Promise<Character[]> {
+    await this.characterOrmRepository.remove(char);
+
+    const characters = await this.characterOrmRepository.find();
+
+    return characters;
+  }
+
   public async update({
     id,
     render,

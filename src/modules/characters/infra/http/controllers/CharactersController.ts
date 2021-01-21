@@ -1,4 +1,5 @@
 import CreateCharacterService from '@modules/characters/services/CreateCharacterService';
+import DeleteCharacterService from '@modules/characters/services/DeleteCharacterService';
 import ImportCharactersService from '@modules/characters/services/ImportCharactersService';
 import ListCharactersService from '@modules/characters/services/ListCharactersService';
 import ShowCharacterService from '@modules/characters/services/ShowCharacterService';
@@ -108,5 +109,15 @@ export default class CharactersController {
     });
 
     return res.json(character);
+  }
+
+  public async delete(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    const deleteCharacter = container.resolve(DeleteCharacterService);
+
+    const characters = await deleteCharacter.execute(id);
+
+    return res.json(characters);
   }
 }

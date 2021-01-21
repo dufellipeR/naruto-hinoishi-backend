@@ -46,6 +46,16 @@ charactersRouter.get(
   charactersController.show,
 );
 
+charactersRouter.delete(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().required(),
+    },
+  }),
+  charactersController.delete,
+);
+
 charactersRouter.put(
   '/:id',
   celebrate({

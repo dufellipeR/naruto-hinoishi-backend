@@ -7,4 +7,5 @@ export default interface ICharactersRepository {
   findById(id: string): Promise<Character | undefined>;
   findAll(): Promise<Character[]>;
   update(data: IUpdateCharacterDTO): Promise<Character | undefined>;
+  delete(char: Character): Promise<Character[]>;
 }
