@@ -2,6 +2,7 @@ import { injectable, inject } from 'tsyringe';
 import overallCalc from '@shared/utils/overallCalc';
 import Character from '../infra/typeorm/entities/Characters';
 import ICharactersRepository from '../repositories/ICharactersRepository';
+import IStatsRepository from '../repositories/IStatsRepository';
 
 interface IRequestDTO {
   render: string;
@@ -23,6 +24,9 @@ class CreateCharacterService {
   constructor(
     @inject('CharactersRepository')
     private charactersRepository: ICharactersRepository,
+
+    @inject('StatsRepository')
+    private statsRepository: IStatsRepository,
   ) {}
 
   public async execute({
@@ -50,11 +54,7 @@ class CreateCharacterService {
       willpower,
     });
 
-    const character = await this.charactersRepository.create({
-      render,
-      type,
-      name,
-      desc,
+    const stat = await this.statsRepository.create({
       strength,
       intelligence,
       speed,
@@ -64,6 +64,14 @@ class CreateCharacterService {
       stamina,
       willpower,
       power,
+    });
+
+    const character = await this.charactersRepository.create({
+      render,
+      type,
+      name,
+      desc,
+      stat_id: stat.id,
     });
 
     return character;

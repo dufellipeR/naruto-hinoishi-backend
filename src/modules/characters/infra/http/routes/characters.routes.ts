@@ -64,7 +64,6 @@ charactersRouter.put(
       type: Joi.string().required(),
       name: Joi.string().required(),
       desc: Joi.string().required(),
-      stat_id: Joi.string().required(),
       strength: Joi.number().required(),
       intelligence: Joi.number().required(),
       speed: Joi.number().required(),

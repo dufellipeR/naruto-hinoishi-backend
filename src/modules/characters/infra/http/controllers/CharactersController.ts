@@ -78,7 +78,7 @@ export default class CharactersController {
       type,
       name,
       desc,
-      stat_id,
+
       strength,
       intelligence,
       speed,
@@ -97,7 +97,7 @@ export default class CharactersController {
       type,
       name,
       desc,
-      stat_id,
+
       strength,
       intelligence,
       speed,

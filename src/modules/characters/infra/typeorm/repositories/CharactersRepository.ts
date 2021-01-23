@@ -20,36 +20,14 @@ class CharactersRepository implements ICharactersRepository {
     type,
     name,
     desc,
-    strength,
-    intelligence,
-    speed,
-    taijutsu,
-    ninjutsu,
-    genjutsu,
-    stamina,
-    willpower,
-    power,
+    stat_id,
   }: ICreateCharacterDTO): Promise<Character> {
-    const stat = this.statOrmRepository.create({
-      strength,
-      intelligence,
-      speed,
-      taijutsu,
-      ninjutsu,
-      genjutsu,
-      stamina,
-      willpower,
-      power,
-    });
-
-    await this.statOrmRepository.save(stat);
-
     const character = this.characterOrmRepository.create({
       render,
       type,
       name,
       desc,
-      stat_id: stat.id,
+      stat_id,
     });
 
     await this.characterOrmRepository.save(character);
@@ -87,39 +65,16 @@ class CharactersRepository implements ICharactersRepository {
     type,
     name,
     desc,
-    stat_id,
-    strength,
-    intelligence,
-    speed,
-    taijutsu,
-    ninjutsu,
-    genjutsu,
-    stamina,
-    willpower,
-    power,
-  }: IUpdateCharacterDTO): Promise<Character | undefined> {
-    await this.characterOrmRepository.update(id, {
+  }: IUpdateCharacterDTO): Promise<Character> {
+    const char = await this.characterOrmRepository.save({
+      id,
       render,
       type,
       name,
       desc,
     });
 
-    await this.statOrmRepository.update(stat_id, {
-      strength,
-      intelligence,
-      speed,
-      taijutsu,
-      ninjutsu,
-      genjutsu,
-      stamina,
-      willpower,
-      power,
-    });
-
-    const character = await this.characterOrmRepository.findOne(id);
-
-    return character;
+    return char;
   }
 }
 
