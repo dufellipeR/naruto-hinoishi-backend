@@ -23,11 +23,19 @@ class CreateBunchCharClanService {
     items,
     character_id,
   }: IRequestDTO): Promise<Char_clan[]> {
-    const afts = this.charClanRepository.createBunch({
+    const charClans = await this.charClanRepository.findCharacterClans(
+      character_id,
+    );
+
+    charClans.forEach(async item => {
+      await this.charClanRepository.delete(item);
+    });
+
+    const clans = this.charClanRepository.createBunch({
       items,
       character_id,
     });
-    return afts;
+    return clans;
   }
 }
 

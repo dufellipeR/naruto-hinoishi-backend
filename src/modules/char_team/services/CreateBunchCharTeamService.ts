@@ -23,6 +23,14 @@ class CreateBunchCharTeamService {
     items,
     character_id,
   }: IRequestDTO): Promise<Char_team[]> {
+    const charTeams = await this.charTeamRepository.findCharacterTeams(
+      character_id,
+    );
+
+    charTeams.forEach(async item => {
+      await this.charTeamRepository.delete(item);
+    });
+
     const teams = this.charTeamRepository.createBunch({
       items,
       character_id,

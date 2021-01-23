@@ -23,6 +23,14 @@ class CreateBunchCharAffiliationService {
     items,
     character_id,
   }: IRequestDTO): Promise<Char_aft[]> {
+    const charAfts = await this.charAffiliationRepository.findCharacterAffiliations(
+      character_id,
+    );
+
+    charAfts.forEach(async item => {
+      await this.charAffiliationRepository.delete(item);
+    });
+
     const afts = this.charAffiliationRepository.createBunch({
       items,
       character_id,

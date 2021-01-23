@@ -23,6 +23,14 @@ class CreateBunchCharKekkeiService {
     items,
     character_id,
   }: IRequestDTO): Promise<Char_kg[]> {
+    const charKekkeis = await this.charKekkeiRepository.findCharacterKekkeis(
+      character_id,
+    );
+
+    charKekkeis.forEach(async item => {
+      await this.charKekkeiRepository.delete(item);
+    });
+
     const kekkeis = this.charKekkeiRepository.createBunch({
       items,
       character_id,
