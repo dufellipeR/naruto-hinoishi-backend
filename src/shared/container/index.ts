@@ -29,6 +29,8 @@ import TeamRepository from '@modules/team/infra/typeorm/repositories/TeamReposit
 import ITeamRepository from '@modules/team/repositories/ITeamRepository';
 import ICharTeamRepository from '@modules/char_team/repositories/ICharTeamRepository';
 import CharTeamRepository from '@modules/char_team/infra/typeorm/repositories/CharTeamRepository';
+import IStatsRepository from '@modules/characters/repositories/IStatsRepository';
+import StatsRepository from '@modules/characters/infra/typeorm/repositories/StatsRepository';
 
 container.registerSingleton<ICharTeamRepository>(
   'CharTeamRepository',
@@ -62,6 +64,11 @@ container.registerSingleton<ICharKekkeiRepository>(
 container.registerSingleton<IKekkeiRepository>(
   'KekkeiRepository',
   KekkeiRepository,
+);
+
+container.registerSingleton<IStatsRepository>(
+  'StatsRepository',
+  StatsRepository,
 );
 
 container.registerSingleton<ICharactersRepository>(
