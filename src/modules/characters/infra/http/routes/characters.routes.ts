@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
-// import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 
 import multer from 'multer';
 
 import uploadConfig from '@config/upload';
+import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
+import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
 import CharactersController from '../controllers/CharactersController';
 
 const charactersRouter = Router();
@@ -12,7 +13,8 @@ const charactersController = new CharactersController();
 
 const upload = multer(uploadConfig.multer);
 
-// charactersRouter.use(ensureAuthenticated);
+charactersRouter.use(ensureAuthenticated);
+charactersRouter.use(ensureAdmin);
 
 charactersRouter.post(
   '/',

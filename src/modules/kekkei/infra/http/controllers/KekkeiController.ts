@@ -87,8 +87,6 @@ export default class KekkeiController {
       willpower,
     });
 
-    console.log(kekkei);
-
     return res.json(kekkei);
   }
 

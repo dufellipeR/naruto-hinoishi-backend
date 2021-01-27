@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
+import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
 import CharAffiliationController from '../controllers/CharAffiliationController';
 
 const charAffiliationRouter = Router();
 const charAffiliationController = new CharAffiliationController();
 
-// charAffiliationRouter.use(ensureAuthenticated);
+charAffiliationRouter.use(ensureAuthenticated);
+charAffiliationRouter.use(ensureAdmin);
 
 charAffiliationRouter.post(
   '/',

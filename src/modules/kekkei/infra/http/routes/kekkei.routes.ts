@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
+import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
 import KekkeiController from '../controllers/KekkeiController';
 
 const kekkeiRouter = Router();
 const kekkeiController = new KekkeiController();
 
-// kekkeiRouter.use(ensureAuthenticated);
+kekkeiRouter.use(ensureAuthenticated);
+kekkeiRouter.use(ensureAdmin);
 
 kekkeiRouter.post(
   '/',

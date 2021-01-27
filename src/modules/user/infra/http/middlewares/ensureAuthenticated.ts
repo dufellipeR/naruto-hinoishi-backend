@@ -9,6 +9,7 @@ interface ITokenPayload {
   iat: number;
   exp: number;
   sub: string;
+  isAdmin: boolean;
 }
 
 export default function ensureAuthenticated(
@@ -29,10 +30,11 @@ export default function ensureAuthenticated(
   try {
     const decoded = verify(token, secret);
 
-    const { sub } = decoded as ITokenPayload;
+    const { sub, isAdmin } = decoded as ITokenPayload;
 
     req.user = {
       id: sub,
+      isAdmin,
     };
 
     return next();

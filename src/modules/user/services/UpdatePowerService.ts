@@ -22,19 +22,15 @@ export default class UpdatePowerService {
 
   public async execute({ user_id }: IRequestDTO): Promise<User | undefined> {
     const user = this.usersRepository.findById(user_id);
-    console.log(user);
 
     if (user) {
       const userCards = await this.cardsRepository.findAllUserCards(user_id);
-      console.log(userCards);
 
       let power = 0;
 
       userCards.forEach(card => {
         power += card.power;
       });
-
-      console.log(power);
 
       const updatePower = this.usersRepository.updatePower({ user_id, power });
 
