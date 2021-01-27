@@ -17,7 +17,6 @@ class FakeUsersRepository implements IUsersRepository {
     power,
   }: IUpdatePowerDTO): Promise<User | undefined> {
     const editUser = this.users.find(users => users.id === user_id);
-    console.log(power);
 
     if (editUser) {
       editUser.power = power;

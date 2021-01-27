@@ -39,8 +39,6 @@ describe('Create Card ', () => {
       user_id: 'existent_user_id',
     });
 
-    console.log(card);
-
     expect(card).toHaveProperty('user_id');
     expect(card.character_id).toBe(char1.id);
   });
