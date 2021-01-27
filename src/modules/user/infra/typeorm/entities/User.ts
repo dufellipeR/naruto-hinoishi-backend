@@ -26,6 +26,9 @@ class User {
   email: string;
 
   @Column()
+  isAdmin: boolean;
+
+  @Column()
   @Exclude()
   password: string;
 
