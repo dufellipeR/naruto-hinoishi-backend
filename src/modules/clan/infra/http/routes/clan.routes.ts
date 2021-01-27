@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
+import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
+import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
 import ClanController from '../controllers/ClanController';
-// import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
 
 const clanRouter = Router();
 const clanController = new ClanController();
 
-// clanRouter.use(ensureAuthenticated);
+clanRouter.use(ensureAuthenticated);
+clanRouter.use(ensureAdmin);
 
 clanRouter.post(
   '/',

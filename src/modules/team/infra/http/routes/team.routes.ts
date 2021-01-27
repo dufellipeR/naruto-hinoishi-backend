@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
+import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
+import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
 import TeamController from '../controllers/TeamController';
-// import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
 
 const teamRouter = Router();
 const teamController = new TeamController();
 
-// teamRouter.use(ensureAuthenticated);
+teamRouter.use(ensureAuthenticated);
+teamRouter.use(ensureAdmin);
 
 teamRouter.post(
   '/',

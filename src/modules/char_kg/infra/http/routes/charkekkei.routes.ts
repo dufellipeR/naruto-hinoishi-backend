@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
+import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
 import CharKekkeiController from '../controllers/CharKekkeiController';
 
 const charkekkeiRouter = Router();
 const charkekkeiController = new CharKekkeiController();
 
-// charkekkeiRouter.use(ensureAuthenticated);
+charkekkeiRouter.use(ensureAuthenticated);
+charkekkeiRouter.use(ensureAdmin);
 
 charkekkeiRouter.post(
   '/',

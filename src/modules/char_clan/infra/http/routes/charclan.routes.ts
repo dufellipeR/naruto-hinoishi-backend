@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
-// import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
+import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
+import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
 import CharClanController from '../controllers/CharClanController';
 
 const charClanRouter = Router();
 const charClanController = new CharClanController();
 
-// charClanRouter.use(ensureAuthenticated);
+charClanRouter.use(ensureAuthenticated);
+charClanRouter.use(ensureAdmin);
 
 charClanRouter.post(
   '/',
