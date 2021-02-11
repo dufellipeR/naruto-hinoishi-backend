@@ -21,6 +21,8 @@ class AffiliationRepository implements IAffiliationRepository {
     genjutsu,
     stamina,
     willpower,
+    pcolor,
+    scolor,
   }: ICreateAffiliationDTO): Promise<Affiliation> {
     const affiliation = this.ormRepository.create({
       name,
@@ -33,6 +35,8 @@ class AffiliationRepository implements IAffiliationRepository {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     });
 
     await this.ormRepository.save(affiliation);
@@ -74,6 +78,8 @@ class AffiliationRepository implements IAffiliationRepository {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     }: ICreateAffiliationDTO,
   ): Promise<Affiliation> {
     const newAffiliation = Object.assign(kekkei, {
@@ -87,6 +93,8 @@ class AffiliationRepository implements IAffiliationRepository {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     });
 
     await this.ormRepository.save(newAffiliation);

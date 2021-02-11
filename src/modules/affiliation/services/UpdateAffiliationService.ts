@@ -14,6 +14,8 @@ interface IRequestDTO {
   genjutsu: number;
   stamina: number;
   willpower: number;
+  pcolor: string;
+  scolor: string;
 }
 
 @injectable()
@@ -36,6 +38,8 @@ class UpdateAffiliationService {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     }: IRequestDTO,
   ): Promise<Affiliation> {
     const kekkei = await this.affiliationRepository.findById(kekkei_id);
@@ -56,6 +60,8 @@ class UpdateAffiliationService {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     });
 
     return UpdatedKekkei;

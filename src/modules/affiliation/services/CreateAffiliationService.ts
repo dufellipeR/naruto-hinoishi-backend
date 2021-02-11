@@ -13,6 +13,8 @@ interface IRequestDTO {
   genjutsu: number;
   stamina: number;
   willpower: number;
+  pcolor: string;
+  scolor: string;
 }
 
 @injectable()
@@ -33,6 +35,8 @@ class CreateAffiliationService {
     genjutsu,
     stamina,
     willpower,
+    pcolor,
+    scolor,
   }: IRequestDTO): Promise<Affiliation> {
     const affiliation = this.affiliationRepository.create({
       name,
@@ -45,6 +49,8 @@ class CreateAffiliationService {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     });
     return affiliation;
   }

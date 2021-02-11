@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
+import uploadConfig from '@config/upload';
+
 import ensureAuthenticated from '@modules/user/infra/http/middlewares/ensureAuthenticated';
 import ensureAdmin from '@modules/user/infra/http/middlewares/ensureAdmin';
+import multer from 'multer';
 import AffiliationController from '../controllers/AffiliationController';
 
 const affiliationRouter = Router();
@@ -9,6 +12,8 @@ const affiliationController = new AffiliationController();
 
 affiliationRouter.use(ensureAuthenticated);
 affiliationRouter.use(ensureAdmin);
+
+const upload = multer(uploadConfig.multer);
 
 affiliationRouter.post(
   '/',
@@ -58,6 +63,12 @@ affiliationRouter.delete(
     },
   }),
   affiliationController.delete,
+);
+
+affiliationRouter.post(
+  '/import',
+  upload.single('file'),
+  affiliationController.import,
 );
 
 export default affiliationRouter;

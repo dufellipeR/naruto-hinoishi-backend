@@ -36,6 +36,12 @@ class Affiliation {
 
   @Column('int')
   willpower: number;
+
+  @Column()
+  pcolor: string;
+
+  @Column()
+  scolor: string;
 }
 
 export default Affiliation;

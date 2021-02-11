@@ -9,4 +9,6 @@ export default interface ICreateAffiliationDTO {
   genjutsu: number;
   stamina: number;
   willpower: number;
+  pcolor: string;
+  scolor: string;
 }

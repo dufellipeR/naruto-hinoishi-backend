@@ -1,5 +1,6 @@
 import CreateAffiliationService from '@modules/affiliation/services/CreateAffiliationService';
 import DeleteAffiliationService from '@modules/affiliation/services/DeleteAffiliationService';
+import ImportAffiliationsService from '@modules/affiliation/services/ImportAffiliationsService';
 import ListAffiliationService from '@modules/affiliation/services/ListAffiliationServices';
 import ShowAffiliationService from '@modules/affiliation/services/ShowAffiliationService';
 import UpdateAffiliationService from '@modules/affiliation/services/UpdateAffiliationService';
@@ -19,6 +20,8 @@ export default class AffiliationController {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     } = req.body;
 
     const createAffiliation = container.resolve(CreateAffiliationService);
@@ -34,6 +37,8 @@ export default class AffiliationController {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     });
 
     return res.json(kekkei).status(200);
@@ -70,6 +75,8 @@ export default class AffiliationController {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     } = req.body;
 
     const updateAffiliation = container.resolve(UpdateAffiliationService);
@@ -85,6 +92,8 @@ export default class AffiliationController {
       genjutsu,
       stamina,
       willpower,
+      pcolor,
+      scolor,
     });
 
     return res.json(affiliation);
@@ -98,5 +107,15 @@ export default class AffiliationController {
     const affiliations = await deleteAffiliation.execute(affiliation_id);
 
     return res.json(affiliations).status(200);
+  }
+
+  public async import(req: Request, res: Response): Promise<Response> {
+    const { file } = req;
+
+    const importAffiliation = container.resolve(ImportAffiliationsService);
+
+    const afts = await importAffiliation.execute(file.path);
+
+    return res.json(afts).status(200);
   }
 }
