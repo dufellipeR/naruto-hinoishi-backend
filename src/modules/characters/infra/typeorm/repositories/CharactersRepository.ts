@@ -20,10 +20,12 @@ class CharactersRepository implements ICharactersRepository {
     type,
     name,
     desc,
+    rendermarg,
     stat_id,
   }: ICreateCharacterDTO): Promise<Character> {
     const character = this.characterOrmRepository.create({
       render,
+      rendermarg,
       type,
       name,
       desc,
@@ -46,7 +48,11 @@ class CharactersRepository implements ICharactersRepository {
   }
 
   public async findAll(): Promise<Character[]> {
-    const characters = await this.characterOrmRepository.find();
+    const characters = await this.characterOrmRepository.find({
+      order: {
+        name: 'ASC',
+      },
+    });
 
     return characters;
   }
@@ -62,6 +68,7 @@ class CharactersRepository implements ICharactersRepository {
   public async update({
     id,
     render,
+    rendermarg,
     type,
     name,
     desc,
@@ -69,6 +76,7 @@ class CharactersRepository implements ICharactersRepository {
     const char = await this.characterOrmRepository.save({
       id,
       render,
+      rendermarg,
       type,
       name,
       desc,

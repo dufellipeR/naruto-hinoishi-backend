@@ -6,6 +6,7 @@ import IStatsRepository from '../repositories/IStatsRepository';
 
 interface IRequestDTO {
   render: string;
+  rendermarg: string;
   type: string;
   name: string;
   desc: string;
@@ -31,6 +32,7 @@ class CreateCharacterService {
 
   public async execute({
     render,
+    rendermarg,
     type,
     name,
     desc,
@@ -68,6 +70,7 @@ class CreateCharacterService {
 
     const character = await this.charactersRepository.create({
       render,
+      rendermarg,
       type,
       name,
       desc,

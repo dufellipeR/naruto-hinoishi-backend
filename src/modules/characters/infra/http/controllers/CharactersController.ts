@@ -20,6 +20,7 @@ export default class CharactersController {
   public async create(req: Request, res: Response): Promise<Response> {
     const {
       render,
+      rendermarg,
       type,
       name,
       desc,
@@ -37,6 +38,7 @@ export default class CharactersController {
 
     const character = await createCharacter.execute({
       render,
+      rendermarg,
       type,
       name,
       desc,
@@ -75,6 +77,7 @@ export default class CharactersController {
     const { id } = req.params;
     const {
       render,
+      rendermarg,
       type,
       name,
       desc,
@@ -94,6 +97,7 @@ export default class CharactersController {
     const character = await updateCharacter.execute({
       id,
       render,
+      rendermarg,
       type,
       name,
       desc,

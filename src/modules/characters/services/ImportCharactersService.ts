@@ -8,6 +8,7 @@ import IStatsRepository from '../repositories/IStatsRepository';
 
 export interface IImportedCharacter {
   render: string;
+  rendermarg: string;
   desc: string;
   type: string;
   name: string;
@@ -57,6 +58,7 @@ class ImportCharactersService {
         genjutsu,
         stamina,
         willpower,
+        rendermarg,
       ] = line;
 
       if (
@@ -71,13 +73,15 @@ class ImportCharactersService {
         !ninjutsu ||
         !genjutsu ||
         !stamina ||
-        !willpower
+        !willpower ||
+        !rendermarg
       ) {
         return;
       }
 
       characters.push({
         render,
+        rendermarg,
         desc,
         type,
         name,
@@ -121,6 +125,7 @@ class ImportCharactersService {
         type: character.type,
         desc: character.desc,
         render: character.render,
+        rendermarg: character.rendermarg,
         stat_id: stat.id,
       });
     });

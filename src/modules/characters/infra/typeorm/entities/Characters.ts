@@ -19,6 +19,9 @@ class Character {
   render: string;
 
   @Column()
+  rendermarg: string;
+
+  @Column()
   type: string;
 
   @Column()

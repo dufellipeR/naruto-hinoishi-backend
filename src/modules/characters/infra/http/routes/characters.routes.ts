@@ -21,6 +21,7 @@ charactersRouter.post(
   celebrate({
     [Segments.BODY]: {
       render: Joi.string(),
+      rendermarg: Joi.number(),
       type: Joi.string().required(),
       name: Joi.string().required(),
       desc: Joi.string().required(),
@@ -63,6 +64,7 @@ charactersRouter.put(
   celebrate({
     [Segments.BODY]: {
       render: Joi.string().required(),
+      rendermarg: Joi.number(),
       type: Joi.string().required(),
       name: Joi.string().required(),
       desc: Joi.string().required(),

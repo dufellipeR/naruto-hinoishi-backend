@@ -8,6 +8,7 @@ import IStatsRepository from '../repositories/IStatsRepository';
 interface IRequest {
   id: string;
   render: string;
+  rendermarg: string;
   type: string;
   name: string;
   desc: string;
@@ -34,6 +35,7 @@ class UpdateCharacterService {
   public async execute({
     id,
     render,
+    rendermarg,
     type,
     name,
     desc,
@@ -84,6 +86,7 @@ class UpdateCharacterService {
     const character = await this.charactersRepository.update({
       id,
       render,
+      rendermarg,
       type,
       name,
       desc,
