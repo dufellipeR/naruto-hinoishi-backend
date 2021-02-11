@@ -10,8 +10,16 @@ export default class ListUserCardsService {
     private cardsRepository: ICardsRepository,
   ) {}
 
-  public async execute(user_id: string): Promise<IShortCard[]> {
-    const cards = await this.cardsRepository.findAllUserCards(user_id);
+  public async execute(
+    user_id: string,
+    filter?: string,
+    name?: string,
+  ): Promise<IShortCard[]> {
+    const cards = await this.cardsRepository.findAllUserCards(
+      user_id,
+      filter,
+      name,
+    );
 
     return cards;
   }

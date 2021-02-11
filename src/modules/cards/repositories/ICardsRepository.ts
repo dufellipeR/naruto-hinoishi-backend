@@ -8,5 +8,9 @@ export default interface ICardsRepository {
   create(data: ICreateCardDTO): Promise<Card>;
   randomCreate(data: ICreateRandomCardDTO): Promise<Card[]>;
   findAllIds(): Promise<IPickModel[]>;
-  findAllUserCards(user_id: string): Promise<IShortCard[]>;
+  findAllUserCards(
+    user_id: string,
+    filter?: string,
+    name?: string,
+  ): Promise<IShortCard[]>;
 }

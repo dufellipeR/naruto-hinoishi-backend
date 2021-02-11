@@ -22,9 +22,15 @@ export default class RandomCardsController {
   public async index(req: Request, res: Response): Promise<Response> {
     const user_id = req.user.id;
 
+    const { filter, name } = req.query;
+
     const listUserCards = container.resolve(ListUserCardsService);
 
-    const cards = await listUserCards.execute(user_id);
+    const cards = await listUserCards.execute(
+      user_id,
+      filter as string,
+      name as string,
+    );
 
     return res.json(cards);
   }
